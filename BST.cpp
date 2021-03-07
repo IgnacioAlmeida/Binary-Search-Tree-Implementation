@@ -1,4 +1,5 @@
 #include "BST.h"
+#include "Node.h"
 
 bool BST::add(int data)
 	{
