@@ -11,11 +11,11 @@ protected:
 	Node<T>* right;
 
 public:
-	Node(const T & theData, 
-	Node<T>* leftVal = NULL, 
-	Node<T>* rightVal =  NULL) :
-	data(theData), left(leftVal), right(rightVal){}
-	
+	Node (const T & theData, 
+		Node<T>* leftVal = NULL, 
+		Node<T>* rightVal =  NULL) :
+		data(theData), left(leftVal), right(rightVal){}
+
 	virtual ~Node();
 	/*
 	* Returns the data that is stored in this node
