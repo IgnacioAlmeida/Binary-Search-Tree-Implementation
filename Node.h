@@ -2,10 +2,20 @@
 #include "NodeInterface.h"
 #include <iostream>
 
+template<typename T>
+
 class Node : public NodeInterface {
+protected:
+	T data;
+	Node<T>* left;
+	Node<T>* right;
 
 public:
-	Node();
+	Node(const T & theData, 
+	Node<T>* leftVal = NULL, 
+	Node<T>* rightVal =  NULL) :
+	data(theData), left(leftVal), right(rightVal){}
+	
 	virtual ~Node();
 	/*
 	* Returns the data that is stored in this node
