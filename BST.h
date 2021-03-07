@@ -3,12 +3,14 @@
 #include "NodeInterface.h"
 
 using namespace std;
- //FIXME haven't done anything here
- //Testing github
-class BSTInterface {
+
+class BST : public BSTInterface {
+protected:
+	Node *root;
+
 public:
-	BSTInterface() {}
-	virtual ~BSTInterface() {}
+	BST();
+	virtual ~BST();
 
 	//Please note that the class that implements this interface must be made
 	//of objects which implement the NodeInterface
@@ -18,7 +20,7 @@ public:
 	*
 	* @return the root node for this tree.
 	*/
-	virtual NodeInterface * getRootNode() const = 0;
+	virtual NodeInterface * getRootNode() const;
 
 	/*
 	* Attempts to add the given int to the BST tree
@@ -26,7 +28,7 @@ public:
 	* @return true if added
 	* @return false if unsuccessful (i.e. the int is already in tree)
 	*/
-	virtual bool add(int data) = 0;
+	virtual bool add(int data);
 
 	/*
 	* Attempts to remove the given int from the BST tree
@@ -34,10 +36,10 @@ public:
 	* @return true if successfully removed
 	* @return false if remove is unsuccessful(i.e. the int is not in the tree)
 	*/
-	virtual bool remove(int data) = 0;
+	virtual bool remove(int data);
 
 	/*
 	* Removes all nodes from the tree, resulting in an empty tree.
 	*/
-	virtual void clear() = 0;
+	virtual void clear();
 };
