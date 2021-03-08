@@ -9,8 +9,8 @@ protected:
 	Node *root;
 	
 public:
-	BST();
-	 ~BST(){}
+	BST(){}
+	virtual ~BST(){}
 
 	//Please note that the class that implements this interface must be made
 	//of objects which implement the NodeInterface
@@ -20,13 +20,16 @@ public:
 	*
 	* @return the root node for this tree.
 	*/
-	NodeInterface * getRootNode() const;
+	NodeInterface * getRootNode() const{
+		return root;
+	}
 
 	bool search(Node, int value){
 		//1. If node is NULL - Return false
 		//2. if node.value == value - return true
 		//3. If value < node.value - Return search(node.left, value)
 		//4. If value > node.value - Return search(Node.right, value)
+		return false;
 	}
 
 	/*
@@ -64,11 +67,13 @@ public:
 	6. Exchange node->data with in_order_predecessor->data
 	7. return delete(node->left, data)
 	*/ 
-	bool remove(int data);
+	bool remove(int data){
+		return false;
+	}
 
 	/*
 	* Removes all nodes from the tree, resulting in an empty tree.
 	*/
-	void clear();
+	void clear(){}
 
 };

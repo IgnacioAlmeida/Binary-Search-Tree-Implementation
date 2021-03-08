@@ -9,32 +9,42 @@ public:
 	Node* left;
 	Node* right;
 
-	Node (const int &theValue, 
+	Node(const int &theValue, 
 		Node* leftVal = NULL, 
-		Node* rightVal =  NULL) :
-		value(theValue), left(leftVal), right(rightVal){}
+		Node* rightVal =  NULL){
+			value = theValue;
+			left = leftVal; 
+			right = rightVal;
+		}
+	Node(){}	
 
-	 ~Node(){}
+	virtual ~Node(){}
 	/*
 	* Returns the data that is stored in this node
 	*
 	* @return the data that is stored in this node.
 	*/
-	int getData() const;
+	int getData() const{
+		return value;
+	}
 
 	/*
 	* Returns the left child of this node or null if it doesn't have one.
 	*
 	* @return the left child of this node or null if it doesn't have one.
 	*/
-	NodeInterface * getLeftChild() const;
+	NodeInterface * getLeftChild() const{
+		return left;
+	}
 
 	/*
 	* Returns the right child of this node or null if it doesn't have one.
 	*
 	* @return the right child of this node or null if it doesn't have one.
 	*/
-	NodeInterface * getRightChild() const;
+	NodeInterface * getRightChild() const{
+		return right;
+	}
 
 	
 };
