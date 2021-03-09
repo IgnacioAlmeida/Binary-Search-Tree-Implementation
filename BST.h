@@ -6,25 +6,14 @@ using namespace std;
 
 class BST : public BSTInterface {
 protected:
-	Node *root;
-	
+	Node *root, *left, *right;
 public:
-	BST(){}
+	BST();
 	virtual ~BST(){}
 
-	//Please note that the class that implements this interface must be made
-	//of objects which implement the NodeInterface
+	Node* getRootNode() const{ return root;}
 
-	/*
-	* Returns the root node for this tree
-	*
-	* @return the root node for this tree.
-	*/
-	NodeInterface * getRootNode() const{
-		return root;
-	}
-
-	bool search(Node, int value){
+	bool search(Node, int data){
 		//1. If node is NULL - Return false
 		//2. if node.value == value - return true
 		//3. If value < node.value - Return search(node.left, value)
@@ -32,25 +21,9 @@ public:
 		return false;
 	}
 
-	/*
-	* Attempts to add the given int to the BST tree
-	*
-	* @return true if added
-	* @return false if unsuccessful (i.e. the int is already in tree)
-	*/
-	/*
-	1. If node is NULL
-		node = new Node(data)
-		return true
-	2. If data == node->data
-		return false
-	3. If data < node->data
-		return insert(node->right, data)
-	4. If data > node->data
-		return insert(node->right, data)
-	*/
-
 	bool add(int data);
+
+	bool recursiveAdd(Node*& node, int data);
 
 	/*
 	* Attempts to remove the given int from the BST tree
@@ -68,6 +41,9 @@ public:
 	7. return delete(node->left, data)
 	*/ 
 	bool remove(int data){
+		return recursiveRemove(root, data);
+	}
+	bool recursiveRemove(Node*& root, int data){
 		return false;
 	}
 
