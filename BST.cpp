@@ -25,29 +25,21 @@ bool BST::recursiveAdd(Node*& root, int data) {
 		else 
 			return false;
 	}
+}
 
-	/*
-	* Attempts to remove the given int from the BST tree
-	*
-	* @return true if successfully removed
-	* @return false if remove is unsuccessful(i.e. the int is not in the tree)
-	*/
-	/*
-	1. If node is NULL, return false 
-	2. If data < node->data, return delete(node->left, data) 
-	3. If data > node->data, return delete(node->right, data)
-	4. If node has no children, delete node, node = NULL, return true
-	5. if Node has 1 child, temp = node->(left or right), delete node, node = temp, return true
-	6. Exchange node->data with in_order_predecessor->data
-	7. return delete(node->left, data)
-	*/ 
-
-	int BST::replaceParent(Node*& temp, Node*& root){
-		if(right->right != NULL)
+	//It stops when we find the right most child  (A node with no right child)
+	//We could've also found the min in the right sub-tree (when going to the right, it would be the first node without left value)
+	void BST::replaceParent(Node*& temp, Node*& root){
+		//If the let child of the node to be deleted has a right subtree, we recursively call the function, 
+		//leaving temp referencing the node containing the item to be removed and root referencing the current root's right child
+		if(root->right != NULL)
 			replaceParent(temp, root->right);
 		else {
+			//copies left child's data into the temp data
 			temp->data = root->data;
+			//Changes temp to point to the left child
 			temp = root;
+			//resets local node's left branch to reference its left child's left subtree
 			root = root->left;
 		}
 	}
@@ -61,21 +53,24 @@ bool BST::recursiveAdd(Node*& root, int data) {
 		if(root == NULL)
 			return false;
 		else{
-			//Creating node to the left
+			//Going to the left
 			if(data < root->data)
 				return recursiveRemove(root->left, data);
-			//Creating node to the right	
+			//Going to the right
 			else if (data > root->data)
 				return recursiveRemove(root->right, data);
-			//Node found
+			//The item is in the local root
 			else {
 				Node* temp = root;
+				//If the node doesn't have a lesser child
 				if(root->left == NULL)
 					root = root->right;
+				//If the node doesn't have a higher child
 				else if(root->right == NULL)
 					root = root->left;
+				//If node has both children	
 				else 
-					replaceParent(temp, temp->left)	
+					replaceParent(temp, temp->left);	
 				delete temp;
 				return true;
 			}	
@@ -85,6 +80,10 @@ bool BST::recursiveAdd(Node*& root, int data) {
 	/*
 	* Removes all nodes from the tree, resulting in an empty tree.
 	*/
-	void clear(){}
-}
+	void BST::clear(){
+		while(root != NULL){
+			remove(root->data);
+		}
+	}
+
 
