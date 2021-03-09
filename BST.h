@@ -40,13 +40,11 @@ public:
 	6. Exchange node->data with in_order_predecessor->data
 	7. return delete(node->left, data)
 	*/ 
-	bool remove(int data){
-		return recursiveRemove(root, data);
-	}
-	bool recursiveRemove(Node*& root, int data){
-		return false;
-	}
+	bool remove(int data);
 
+	bool recursiveRemove(Node*& root, int data);
+
+	int replaceParent(Node*& temp, Node*& root);
 	/*
 	* Removes all nodes from the tree, resulting in an empty tree.
 	*/

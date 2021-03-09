@@ -42,14 +42,21 @@ bool BST::recursiveAdd(Node*& root, int data) {
 	7. return delete(node->left, data)
 	*/ 
 
-	int replaceParent(Node*& temp, root){
-		if(riit->right != NULL)
-			replaceParent(temp)
+	int BST::replaceParent(Node*& temp, Node*& root){
+		if(right->right != NULL)
+			replaceParent(temp, root->right);
+		else {
+			temp->data = root->data;
+			temp = root;
+			root = root->left;
+		}
 	}
-	bool remove(int data){
+
+	bool BST::remove(int data){
 		return recursiveRemove(root, data);
 	}
-	bool recursiveRemove(Node*& root, int data){
+
+	bool BST::recursiveRemove(Node*& root, int data){
 		//If tree is empty
 		if(root == NULL)
 			return false;
@@ -69,6 +76,8 @@ bool BST::recursiveAdd(Node*& root, int data) {
 					root = root->left;
 				else 
 					replaceParent(temp, temp->left)	
+				delete temp;
+				return true;
 			}	
 		}
 	}
